@@ -29,12 +29,11 @@ def main():
 
     # link = input()
     link = 'https://natasha.github.io/'
-    session = req.Session()
-    get_links(session, link, out, True)
+    get_links(link, out, True)
 
 
-def get_links(session, link, out, first=None):
-    response = session.get(link)
+def get_links(link, out, first=None):
+    response = req.get(link)
     soup = BSoup(response.text, 'lxml')
     for el in soup.findAll('a'):
         try:
@@ -44,7 +43,7 @@ def get_links(session, link, out, first=None):
         if href.startswith('http') or href.startswith('https'):
             out(link=href)
             if first:
-                get_links(session, href, out)
+                get_links(href, out)
 
 
 if __name__ == '__main__':
