@@ -27,8 +27,7 @@ def main():
               'Будет использован вывод в консоль')
         out = console_out
 
-    # link = input()
-    link = 'https://natasha.github.io/'
+    link = input('Введите ссылку:\n')
     get_links(link, out, True)
 
 
